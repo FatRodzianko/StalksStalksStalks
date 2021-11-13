@@ -29,6 +29,8 @@ public class MainMenuManager : MonoBehaviour
     public List<GameObject> listOfLobbyListItems = new List<GameObject>();
 
     public static MainMenuManager instance;
+
+    [SerializeField] GameObject ThanksForSupport;
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,6 +46,15 @@ public class MainMenuManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+    }
+    private void Start()
+    {
+        if (System.IO.File.Exists("support-dlc.txt"))
+        {
+            ThanksForSupport.SetActive(true);
+        }
+        else
+            ThanksForSupport.SetActive(false);
     }
     public void CreateNewLobby()
     {
