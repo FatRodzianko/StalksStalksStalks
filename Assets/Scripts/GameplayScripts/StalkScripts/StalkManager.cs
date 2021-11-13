@@ -729,17 +729,17 @@ public class StalkManager : NetworkBehaviour
     {
         //add the yearly events
         //Bull events
-        BullEvents.Add(new SpecialEvent("strYker!!!", "I drink your milkshake. Sluuurrrrp! I drink it up!", 15));
+        BullEvents.Add(new SpecialEvent("strYker!!!", "The company has discovered a way to tap into a rival's oil reserves while they are none the wiser. Time to slurp it up.", 15));
         BullEvents.Add(new SpecialEvent("strYker!!!", "Papa John appointed as Administrator of the EPA.", 10));
         BullEvents.Add(new SpecialEvent("strYker!!!", "New oil deposists found beneath sacred Indian site. ", 5));
         BullEvents.Add(new SpecialEvent("strYker!!!", "Regulations on poisoning the water supply relaxed.", 10));
         BullEvents.Add(new SpecialEvent("strYker!!!", "Coup in Venezuela successful. Chicago Boys on first plane to Caracas to take over the finance ministry.", 20));
 
-        BullEvents.Add(new SpecialEvent("Soprano's HUD Scam", "This Old House has a lot of copper pipes. Bada-bing!", 10));
-        BullEvents.Add(new SpecialEvent("Soprano's HUD Scam", "Great meeting in the Russian bathhouse. You weren't even the fattest one there!", 5));
-        BullEvents.Add(new SpecialEvent("Soprano's HUD Scam", "City Council member shows up at your underground casino. You spike their drinks and loand them $50k. They lose it all.", 10));
-        BullEvents.Add(new SpecialEvent("Soprano's HUD Scam", "After purchasing a block of dilapidated homes, Police Commissioner on the dole agrees to clear out the 'riffraff' living in the neighborhood.", 5));
-        BullEvents.Add(new SpecialEvent("Soprano's HUD Scam", "Head of the Urban League receives bill for daughter's college tuition. They agree to sign off on your scam.", 15));
+        BullEvents.Add(new SpecialEvent("Mafia HUD Scam", "This Old House has a lot of copper pipes. Bada-bing!", 10));
+        BullEvents.Add(new SpecialEvent("Mafia HUD Scam", "Great meeting in the Russian bathhouse. You weren't even the fattest one there!", 5));
+        BullEvents.Add(new SpecialEvent("Mafia HUD Scam", "City Council member shows up at your underground casino. You spike their drinks and loan them $50k. They lose it all.", 10));
+        BullEvents.Add(new SpecialEvent("Mafia HUD Scam", "After purchasing a block of dilapidated homes, Police Commissioner on the dole agrees to clear out the 'riffraff' living in the neighborhood.", 5));
+        BullEvents.Add(new SpecialEvent("Mafia HUD Scam", "Head of the Urban League receives bill for daughter's college tuition. They agree to sign off on your scam.", 15));
 
         BullEvents.Add(new SpecialEvent("Teamsters Pension Fund", "Ah Marone another hotel in Las Vegas needs our help. We're getting in on the ground floor!", 10));
         BullEvents.Add(new SpecialEvent("Teamsters Pension Fund", "Bullets left on the doorsteps of union member dissidents day before leadership elections.", 5));
@@ -747,13 +747,13 @@ public class StalkManager : NetworkBehaviour
         BullEvents.Add(new SpecialEvent("Teamsters Pension Fund", "New union contract signed with FedEx. Nation wide strike ends!", 5));
         BullEvents.Add(new SpecialEvent("Teamsters Pension Fund", "An epidemic of goods falling off the back of trucks and right into the hands of our 'friends.'", 15));
 
-        BullEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Mr Urbns, time for your sponge bath!", 10));
+        BullEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Mr CEO Man, time for your sponge bath!", 10));
         BullEvents.Add(new SpecialEvent("Springfield Nuclear Power", "New union contract specifies donuts to be provided each morning to every employee. Productivity increases 10%", 15));
         BullEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Reactor meltdown avoided after employee presses random button on the control panel.", 5));
         BullEvents.Add(new SpecialEvent("Springfield Nuclear Power", "New chairs with added lumbar support provided to all control operators.", 5));
         BullEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Worst performing employee quits to follow their dream of working at the bowling alley. We'll never see them again!", 10));
 
-        BullEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "There's nothing on this Earth like genuine, bonafide, electrified, six car MONORAIL!", 5));
+        BullEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "The sweet smell of ozone permeates the air as the electrified third rail is powered on.", 5));
         BullEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "An anchor was conviently found on the runaway monorail train.", 10));
         BullEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "The citizens of the town come to their good senses, cast away all doubts about the monorail project, and purchase the monorail.", 20));
         BullEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "No one in this one horse town has heard of, let alone seen, The Music Man.", 15));
@@ -784,17 +784,17 @@ public class StalkManager : NetworkBehaviour
         BullEvents.Add(new SpecialEvent("My Pillow, Your Pillow, We're All Pillows!", "'My Pillow, Your Pillow, We're All Pillows!' featured in latest flat earth documentry.", 5));
 
         //Bear Events
-        BearEvents.Add(new SpecialEvent("strYker!!!", "I've abandoned my child...I'VE ABANDONED MY CHILD. I'VE ABANDONED MY BOY!", -20));
+        BearEvents.Add(new SpecialEvent("strYker!!!", "You invite your son to go bowling with you. Things don't end \"well.\"", -20));
         BearEvents.Add(new SpecialEvent("strYker!!!", "Coup in Venezuela failed. strYker's hand picked \"legitimate\" leader Otto Von Mengele gained zero popular support and was laughed out of the country.", -10));
         BearEvents.Add(new SpecialEvent("strYker!!!", "New regulations in the U.S. restrict dumping oil directly into rivers.", -15));
         BearEvents.Add(new SpecialEvent("strYker!!!", "Hired former Head of Safety and Quality Assurance from BP to design new offshore oilrigs.", -25));
         BearEvents.Add(new SpecialEvent("strYker!!!", "New policy enacted to allow oil tanker captains (1) cup of beer while on duty. All captains purchase gallon sized cup.", -15));
 
-        BearEvents.Add(new SpecialEvent("Soprano's HUD Scam", "\"Of all the girls in Jersey, you had to **** this one?\" Tony Soprano beats you with a belt.", -10));
-        BearEvents.Add(new SpecialEvent("Soprano's HUD Scam", "City Council member gets cold feet. You're forced to give them cement shoes. Scam on hold until you can blackmail another council member to play ball.", -20));
-        BearEvents.Add(new SpecialEvent("Soprano's HUD Scam", "A bright eyed idealist at HUD actually read your load application. Denied.", -20));
-        BearEvents.Add(new SpecialEvent("Soprano's HUD Scam", "After a hard day's night working (drinking and playing cards in the back of a strip club), your tummy grumbles and you need to poo. It's the first poo in a week, and you've been eating nothing but cured meats during that time.", -15));
-        BearEvents.Add(new SpecialEvent("Soprano's HUD Scam", "\"What ever happened to the Gary Cooper types\" you say to yourself as you start to cry watching James Cagney beat his wife with a grapefruit in 'The Public enemy.'", -15));
+        BearEvents.Add(new SpecialEvent("Mafia HUD Scam", "Mafia don beats you with a belt after discovering your dalliance with a woman he once looked at.", -10));
+        BearEvents.Add(new SpecialEvent("Mafia HUD Scam", "City Council member gets cold feet. You're forced to give them cement shoes. Scam on hold until you can blackmail another council member to play ball.", -20));
+        BearEvents.Add(new SpecialEvent("Mafia HUD Scam", "A bright eyed idealist at HUD actually read your load application. Denied.", -20));
+        BearEvents.Add(new SpecialEvent("Mafia HUD Scam", "After a hard day's night working (drinking and playing cards in the back of a strip club), your tummy grumbles and you need to poo. It's the first poo in a week, and you've been eating nothing but cured meats during that time.", -15));
+        BearEvents.Add(new SpecialEvent("Mafia HUD Scam", "\"What ever happened to the Gary Cooper types\" you say to yourself as you start to cry watching James Cagney beat his wife with a grapefruit in 'The Public enemy.'", -15));
 
         BearEvents.Add(new SpecialEvent("Teamsters Pension Fund", "Pension fund now managed by Goldman Sachs & Co. and Northern Trust Global Advisors fiduciaries. no more corruption!", -25));
         BearEvents.Add(new SpecialEvent("Teamsters Pension Fund", "Motor Carrier Act passes congress.", -20));
@@ -803,14 +803,14 @@ public class StalkManager : NetworkBehaviour
         BearEvents.Add(new SpecialEvent("Teamsters Pension Fund", "Vegas casinos convinced themselves that adding theme parks to their hotels will finally allow them to take money directly from children. All parks shuttered in early 2000's.", -15));
 
         BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Danke, sir, we're from Germany and here to make your power plant more efficient.", -5));
-        BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Three-eyed fish found in river downstream from the plant.", -10));
+        BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Two headed toads found in river downstream from the plant.", -10));
         BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "New, cheaper vending machines installed in the break room. Items get stuck in the machine more frequently compared to the older machines. Producivity plummets as an increasing number of employees get their arms stuck in the vending machines.", -15));
-        BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Your long lost, cherished childhood toy ObOb is found by an employee's child. You reluctantly agree to pay the family to feel something for the first time in a decade.", -5));
+        BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Your long lost, cherished childhood toy is found by an employee's child. You reluctantly agree to pay the family to feel something for the first time in a decade.", -5));
         BearEvents.Add(new SpecialEvent("Springfield Nuclear Power", "Department of Energy Inspectors arrive at the plant.", -10));
 
         BearEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "At the townhall, a busybody citizen asks pointed questions about the details of the monorail project.", -10));
         BearEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "An intrepid citizen visits neighboring town to see the results of their monorail project.", -15));
-        BearEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "Townsfolk confused by the 'MONO = ONE RAIL = RAIL' presentation slide.", -5));
+        BearEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "Townsfolk confused by the PowerPoint slide defining what a monorail is.", -5));
         BearEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "Monorail train cars installed with no brakes.", -10));
         BearEvents.Add(new SpecialEvent("North Haverbrook MONORAIL", "Designer of the monorail train cars blows the whistle on shoddy contruction and cheap materials used to build the North Haverbrook MONORAIL.", -10));
 

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  stalkName: Soprano's HUD Scam
+  stalkName: Mafia HUD Scam
   pricePerShare: 100
   YearlyChange: 0
   minChangeBear: 5
@@ -56,6 +56,7 @@ MonoBehaviour:
   bearDividend: 1
   bullDividend: 3
   didStalkSplit: 0
+  isBankrupt: 0
   stalkListItemPrefab: {fileID: 7484760113795675723, guid: 8657996b81bbbf0449a8be79a721b54f,
     type: 3}
   myStalkListItemObject: {fileID: 0}
