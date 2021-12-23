@@ -127,6 +127,20 @@ public class SteamAchievementManager : MonoBehaviour
             Debug.Log("NumberOfYearsAchievements: Mortgage");
         }
     }
-
+    public void TookOutLoan()
+    {
+        SteamUserStats.SetAchievement("SSS_TOOK_OUT_LOAN");
+        SteamUserStats.StoreStats();
+    }
+    public void DefaultedOnLoan()
+    {
+        SteamUserStats.SetAchievement("SSS_DEFAULT_LOAN");
+        SteamUserStats.StoreStats();
+    }
+    public void PaidOffLoan()
+    {
+        SteamUserStats.SetAchievement("SSS_PAID_LOAN");
+        SteamUserStats.StoreStats();
+    }
 
 }

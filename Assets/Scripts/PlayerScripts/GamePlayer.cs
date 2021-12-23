@@ -563,8 +563,11 @@ public class GamePlayer : NetworkBehaviour
         if (isServer)
             doesPlayerHaveLoan = newValue;
         if (isClient)
-        { 
-
+        {
+            if (hasAuthority)
+            {
+                SteamAchievementManager.instance.TookOutLoan();
+            }
         }
     }
     public void PayLoan(int payment)
@@ -605,6 +608,7 @@ public class GamePlayer : NetworkBehaviour
                         this.myLoanScript.loanBalance = 0;
                         this.myLoanScript.minPayment = 0;
                         this.isLoanPaidOff = true;
+                        RpcPaidOffLoan();
                     }
 
                     this.myLoanScript.HandlePaidThisYear(this.myLoanScript.paidThisYear, true);
@@ -638,6 +642,7 @@ public class GamePlayer : NetworkBehaviour
             if (hasAuthority && newValue)
             {
                 GameplayManager.instance.HideAllLoanPanels();
+                SteamAchievementManager.instance.DefaultedOnLoan();
             }
         }
     }
@@ -659,6 +664,14 @@ public class GamePlayer : NetworkBehaviour
                 Debug.Log(e);
             }
             
+        }
+    }
+    [ClientRpc]
+    void RpcPaidOffLoan()
+    {
+        if (hasAuthority)
+        {
+            SteamAchievementManager.instance.PaidOffLoan();
         }
     }
 }
