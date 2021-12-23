@@ -470,9 +470,17 @@ public class GameplayManager : NetworkBehaviour
             if (wasTieBroken)
                 GameWinnerText.text += " (cash on hand tie breaker).";
             if (winningPlayers[0].playerSteamId == LocalGamePlayerScript.playerSteamId)
+            {
                 DidLocalPlayerWinText.text = localPlayerWon;
+                //Game.PlayerWonGame();
+                SteamAchievementManager.instance.PlayerWonGame();
+            }
             else
+            {
                 DidLocalPlayerWinText.text = localPlayerDidNotWin;
+                //Game.PlayerLostGame();
+                SteamAchievementManager.instance.PlayerLostGame();
+            }                
         }
         else if (isThereATie)
         {
@@ -481,14 +489,25 @@ public class GameplayManager : NetworkBehaviour
             {
                 GameWinnerText.text += " and " + winningPlayers[i].PlayerName;
             }
-            if(winningPlayers.Any(x => x.playerSteamId == LocalGamePlayerScript.playerSteamId))
+            if (winningPlayers.Any(x => x.playerSteamId == LocalGamePlayerScript.playerSteamId))
+            {
                 DidLocalPlayerWinText.text = localPlayerWon;
+                //Game.PlayerWonGame();
+                SteamAchievementManager.instance.PlayerWonGame();
+            }
             else
+            {
                 DidLocalPlayerWinText.text = localPlayerDidNotWin;
+                //Game.PlayerLostGame();
+                SteamAchievementManager.instance.PlayerLostGame();
+            }
+                
         }
         GameOverPanel.SetActive(true);
         GameWinnerText.gameObject.SetActive(true);
         DidLocalPlayerWinText.gameObject.SetActive(true);
+        SteamAchievementManager.instance.CheckLocalPlayerStatsEndOfGame(LocalGamePlayerScript);
+        SteamAchievementManager.instance.NumberOfYearsAchievements(maxNumberOfYears);
     }
     public void QuitGame()
     {

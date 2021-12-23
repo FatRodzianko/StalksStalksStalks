@@ -149,4 +149,41 @@ public class NetworkManagerStalks : NetworkManager
         Start();
 
     }
+    public void PlayerWonGame()
+    {
+        if (!SteamManager.Initialized)
+            Debug.Log("No steam manager???");
+        else
+            Debug.Log("YES steam manager!!!");
+        Debug.Log("SteamAchievementManager: PlayerWonGame");
+        /*bool hasPlayerWonGameYet = false;
+        SteamUserStats.GetAchievement("SSS_Win_One_Game", out hasPlayerWonGameYet);
+        if (!hasPlayerWonGameYet)
+        {
+            SteamUserStats.SetAchievement("SSS_Win_One_Game");
+            SteamUserStats.StoreStats();
+            Debug.Log("SteamAchievementManager: Submitted achievement for SSS_Win_One_Game");
+        }*/
+        SteamUserStats.SetAchievement("SSS_WIN_ONE_GAME");
+        SteamUserStats.SetAchievement("SSS_Win_One_Game");
+        SteamUserStats.StoreStats();
+
+    }
+    public void PlayerLostGame()
+    {
+        if (!SteamManager.Initialized)
+            Debug.Log("No steam manager???");
+        else
+            Debug.Log("YES steam manager!!!");
+        Debug.Log("SteamAchievementManager: PlayerLostGame");
+        bool hasPlayerWonGameYet = false;
+        SteamUserStats.GetAchievement("SSS_LOSE_ONE_GAME", out hasPlayerWonGameYet);
+        if (!hasPlayerWonGameYet)
+        {
+            SteamUserStats.SetAchievement("SSS_LOSE_ONE_GAME");
+            SteamUserStats.SetAchievement("SSS_Lose_One_Game");
+            SteamUserStats.StoreStats();
+            Debug.Log("SteamAchievementManager: Submitted achievement for SSS_Lose_One_Game");
+        }
+    }
 }
