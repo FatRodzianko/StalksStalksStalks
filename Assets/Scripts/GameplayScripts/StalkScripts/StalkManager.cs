@@ -294,6 +294,10 @@ public class StalkManager : NetworkBehaviour
                 if (owned.StalkName == splitStalk.stalkName && owned.TotalStalks > 0)
                 {
                     owned.TotalStalks *= 2;
+                    //Find the owner of the stalk's Gameplayer object to get the split stalk achievement?
+                    GamePlayer playerOwner = NetworkIdentity.spawned[owned.PlayerNetId].gameObject.GetComponent<GamePlayer>();
+                    Debug.Log("StalkManager.cs: SplitStalks: player owns a stalk that split. " + playerOwner.PlayerName + " owned player name: " + owned.PlayerName + owned.PlayerNetId.ToString());
+                    playerOwner.RpcStalksSplit();
                 }
             }
             foreach (StalkOwnedListItem stalkOwnedListItem in stalksOwnedListItems)
@@ -330,6 +334,9 @@ public class StalkManager : NetworkBehaviour
                     if (owned.StalkName == stalk.stalkName && owned.TotalStalks > 0)
                     {
                         owned.TotalStalks *= 2;
+                        GamePlayer playerOwner = NetworkIdentity.spawned[owned.PlayerNetId].gameObject.GetComponent<GamePlayer>();
+                        Debug.Log("StalkManager.cs: CheckForSplitStalks: player owns a stalk that split. " + playerOwner.PlayerName + " owned player name: " + owned.PlayerName + owned.PlayerNetId.ToString());
+                        playerOwner.RpcStalksSplit();
                     }
                 }
                 foreach (StalkOwnedListItem stalkOwnedListItem in stalksOwnedListItems)
@@ -488,6 +495,7 @@ public class StalkManager : NetworkBehaviour
         {
             int totalStalkValue = 0;
             int netWorthValue = 0;
+            int totalUniqueStalksOwned = 0;
             foreach (StalksOwned owned in stalksOwned)
             {
                 if (owned.PlayerSteamId == player.playerSteamId && owned.TotalStalks > 0)
@@ -498,9 +506,36 @@ public class StalkManager : NetworkBehaviour
                     {
                         totalStalkValue = (priceOfStalk * owned.TotalStalks);
                         netWorthValue += totalStalkValue;
+                        totalUniqueStalksOwned++;
                     }
+                    
                 }
             }
+
+            if (totalUniqueStalksOwned == 10)
+            {
+                Debug.Log("Player owns one of each stalk. Checking if they own enough of each to get the diversified achivement");
+                bool doesPlayerOwnTen = false;
+                foreach (StalksOwned owned in stalksOwned)
+                {
+                    if (owned.PlayerSteamId == player.playerSteamId)
+                    {
+                        if (owned.TotalStalks >= 10)
+                            doesPlayerOwnTen = true;
+                        else
+                        {
+                            doesPlayerOwnTen = false;
+                            break;
+                        }
+                    }
+                }
+                if (doesPlayerOwnTen)
+                {
+                    Debug.Log("Player owns ten shares of all ten stalks!");
+                    player.RpcDiversified();
+                }
+            }
+
             netWorthValue += player.cashOnHand;
 
             if (GameplayManager.instance.areLoansEnabled)
@@ -705,6 +740,7 @@ public class StalkManager : NetworkBehaviour
                     //stalksOwnedListItems.Remove
                     //NetworkServer.Destroy(stalkOwnedListItem.gameObject);
                     stalksOwnedListItemsToRemove.Add(stalkOwnedListItem);
+                    stalkOwnedListItem.BankruptAchievement();
                 }
             }
             //stalksOwnedListItems.RemoveAll(x => x.stalkName == bankrupt.stalkName);

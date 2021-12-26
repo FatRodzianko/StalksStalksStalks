@@ -68,6 +68,15 @@ public class StalkOwnedListItem : NetworkBehaviour
     {
         Debug.Log("SetTotalStalksOwned: setting total stalks to " + newValue.ToString());
         NumberOwnedText.text = newValue.ToString("N0");
+        if (newValue >= 300)
+        {
+            GamePlayer localPlayer = GameObject.FindGameObjectWithTag("LocalGamePlayer").GetComponent<GamePlayer>();
+            if (ownerName == localPlayer.PlayerName && ownerSteamId == localPlayer.playerSteamId)
+            {
+                Debug.Log("FindIfOwnerIsLocalGamePlayer: The local player " + localPlayer.PlayerName + " is the owner of this StalkOwnedListItem object.");
+                localPlayer.RpcAllIn();
+            }
+        }
     }
     public void SellStalk()
     {
@@ -81,6 +90,16 @@ public class StalkOwnedListItem : NetworkBehaviour
             {
                 ownerScript.PlayerSellStalks(this.stalkName, amountToSell);
             }
+        }
+    }
+    public void BankruptAchievement()
+    {
+        Debug.Log("StalkOwnedListItem: BankruptAchievement");
+        GamePlayer localPlayer = GameObject.FindGameObjectWithTag("LocalGamePlayer").GetComponent<GamePlayer>();
+        if (ownerName == localPlayer.PlayerName && ownerSteamId == localPlayer.playerSteamId)
+        {
+            Debug.Log("FindIfOwnerIsLocalGamePlayer: The local player " + localPlayer.PlayerName + " is the owner of this StalkOwnedListItem object.");
+            localPlayer.RpcBankruptStalk();
         }
     }
 }

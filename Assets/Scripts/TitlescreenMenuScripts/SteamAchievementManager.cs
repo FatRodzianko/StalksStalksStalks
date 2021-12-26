@@ -47,6 +47,30 @@ public class SteamAchievementManager : MonoBehaviour
         //SteamUserStats.SetAchievement("SSS_Win_One_Game");
         //SteamUserStats.StoreStats();
         Steamworks.SteamUserStats.SetAchievement("SSS_Win_One_Game");
+        
+
+
+        int lifetimeWins = 0;
+        SteamUserStats.GetStat("sss_wins", out lifetimeWins);
+
+        if (lifetimeWins < 1000)
+        {
+            lifetimeWins++;
+            SteamUserStats.SetStat("sss_wins", lifetimeWins);
+            if (lifetimeWins == 1000)
+            {
+                SteamUserStats.SetAchievement("SSS_WINS_THOUSAND");
+            }
+            else if (lifetimeWins >= 100)
+            {
+                SteamUserStats.SetAchievement("SSS_WIN_HUNDRED");
+            }
+            else if (lifetimeWins >= 10)
+            {
+                SteamUserStats.SetAchievement("SSS_WIN_TEN");
+            }
+        }
+
         Steamworks.SteamUserStats.StoreStats();
 
     }
@@ -65,6 +89,27 @@ public class SteamAchievementManager : MonoBehaviour
             SteamUserStats.SetAchievement("SSS_Lose_One_Game");
             SteamUserStats.StoreStats();
             Debug.Log("SteamAchievementManager: Submitted achievement for SSS_Lose_One_Game");
+        }
+
+        int lifetimeLoses = 0;
+        SteamUserStats.GetStat("sss_loses", out lifetimeLoses);
+
+        if (lifetimeLoses < 1000)
+        {
+            lifetimeLoses++;
+            SteamUserStats.SetStat("sss_wins", lifetimeLoses);
+            if (lifetimeLoses == 1000)
+            {
+                SteamUserStats.SetAchievement("SSS_LOSES_THOUSAND");
+            }
+            else if (lifetimeLoses >= 100)
+            {
+                SteamUserStats.SetAchievement("SSS_LOSES_HUNDRED");
+            }
+            else if (lifetimeLoses >= 10)
+            {
+                SteamUserStats.SetAchievement("SSS_LOSES_TEN");
+            }
         }
     }
     public void CheckLocalPlayerStatsEndOfGame(GamePlayer localPlayer)
@@ -126,6 +171,13 @@ public class SteamAchievementManager : MonoBehaviour
             SteamUserStats.StoreStats();
             Debug.Log("NumberOfYearsAchievements: Mortgage");
         }
+        else if (years == 99)
+        {
+            SteamUserStats.SetAchievement("SSS_CENTURY");
+            SteamUserStats.StoreStats();
+            Debug.Log("NumberOfYearsAchievements: Century");
+        }
+        
     }
     public void TookOutLoan()
     {
@@ -140,6 +192,30 @@ public class SteamAchievementManager : MonoBehaviour
     public void PaidOffLoan()
     {
         SteamUserStats.SetAchievement("SSS_PAID_LOAN");
+        SteamUserStats.StoreStats();
+    }
+    public void StalksSplit()
+    {
+        Debug.Log("SteamAchievementManager: StalksSplit");
+        SteamUserStats.SetAchievement("SSS_SPLIT");
+        SteamUserStats.StoreStats();
+    }
+    public void AllIn()
+    {
+        Debug.Log("SteamAchievementManager: AllIn");
+        SteamUserStats.SetAchievement("SSS_ALL_IN");
+        SteamUserStats.StoreStats();
+    }
+    public void Diversified()
+    {
+        Debug.Log("SteamAchievementManager: Diversified");
+        SteamUserStats.SetAchievement("SSS_DIVERSIFIED");
+        SteamUserStats.StoreStats();
+    }
+    public void BankruptStalk()
+    {
+        Debug.Log("SteamAchievementManager: BankruptStalk");
+        SteamUserStats.SetAchievement("SSS_BANKRUPT");
         SteamUserStats.StoreStats();
     }
 

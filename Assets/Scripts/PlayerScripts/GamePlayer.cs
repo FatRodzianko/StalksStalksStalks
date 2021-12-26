@@ -674,4 +674,38 @@ public class GamePlayer : NetworkBehaviour
             SteamAchievementManager.instance.PaidOffLoan();
         }
     }
+    [ClientRpc]
+    public void RpcStalksSplit()
+    {
+        Debug.Log("GamePlayer.cs: RpcStalksSplit");
+        if (hasAuthority)
+        {
+            Debug.Log("GamePlayer.cs: RpcStalksSplit hasAuthority");
+            SteamAchievementManager.instance.StalksSplit();
+        }
+    }
+    [ClientRpc]
+    public void RpcAllIn()
+    {
+        if (hasAuthority)
+        {
+            SteamAchievementManager.instance.AllIn();
+        }
+    }
+    [ClientRpc]
+    public void RpcBankruptStalk()
+    {
+        if (hasAuthority)
+        {
+            SteamAchievementManager.instance.BankruptStalk();
+        }
+    }
+    [ClientRpc]
+    public void RpcDiversified()
+    {
+        if (hasAuthority)
+        {
+            SteamAchievementManager.instance.Diversified();
+        }
+    }
 }
