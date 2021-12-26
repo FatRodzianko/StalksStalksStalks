@@ -52,7 +52,7 @@ public class SteamAchievementManager : MonoBehaviour
 
         int lifetimeWins = 0;
         SteamUserStats.GetStat("sss_wins", out lifetimeWins);
-
+        Debug.Log("SteamAchievementManager: lifetime wins are: " + lifetimeWins.ToString());
         if (lifetimeWins < 1000)
         {
             lifetimeWins++;
@@ -93,7 +93,7 @@ public class SteamAchievementManager : MonoBehaviour
 
         int lifetimeLoses = 0;
         SteamUserStats.GetStat("sss_loses", out lifetimeLoses);
-
+        Debug.Log("SteamAchievementManager: lifetime loses are: " + lifetimeLoses.ToString());
         if (lifetimeLoses < 1000)
         {
             lifetimeLoses++;
