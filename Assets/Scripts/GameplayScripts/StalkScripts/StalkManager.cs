@@ -138,6 +138,18 @@ public class StalkManager : NetworkBehaviour
                     else
                     {
                         newYearlyChange = rng.Next((stalk.maxChangeBear * -1), (stalk.minChangeBear * -1));
+                        if (GameplayManager.instance.maxNumberOfYears > 49)
+                        {
+                            Debug.Log("AdjustStalksForNewYear: More than 50 year game. Softening the yearly change. Old yearly change: " + newYearlyChange.ToString());
+                            newYearlyChange = (int)(newYearlyChange * 0.45);
+                            Debug.Log("AdjustStalksForNewYear: More than 50 year game. Softening the yearly change. NEW yearly change: " + newYearlyChange.ToString());
+                        }
+                        else if (GameplayManager.instance.maxNumberOfYears > 19)
+                        {
+                            Debug.Log("AdjustStalksForNewYear: More than 20 year game. Softening the yearly change. Old yearly change: " + newYearlyChange.ToString());
+                            newYearlyChange = (int)(newYearlyChange * 0.7);
+                            Debug.Log("AdjustStalksForNewYear: More than 20 year game. Softening the yearly change. NEW yearly change: " + newYearlyChange.ToString());
+                        }
                     }
                     stalk.UpdateYearlyChange(stalk.YearlyChange, newYearlyChange);
                     newPricePerShare += newYearlyChange;
@@ -174,6 +186,18 @@ public class StalkManager : NetworkBehaviour
                     else
                     {
                         newYearlyChange = rng.Next((stalk.minChangeBull), (stalk.maxChangeBull));
+                        if (GameplayManager.instance.maxNumberOfYears > 49)
+                        {
+                            Debug.Log("AdjustStalksForNewYear: More than 50 year game. Softening the yearly change. Old yearly change: " + newYearlyChange.ToString());
+                            newYearlyChange = (int)(newYearlyChange * 0.5);
+                            Debug.Log("AdjustStalksForNewYear: More than 50 year game. Softening the yearly change. NEW yearly change: " + newYearlyChange.ToString());
+                        }
+                        else if (GameplayManager.instance.maxNumberOfYears > 19)
+                        {
+                            Debug.Log("AdjustStalksForNewYear: More than 20 year game. Softening the yearly change. Old yearly change: " + newYearlyChange.ToString());
+                            newYearlyChange = (int)(newYearlyChange * 0.8);
+                            Debug.Log("AdjustStalksForNewYear: More than 20 year game. Softening the yearly change. NEW yearly change: " + newYearlyChange.ToString());
+                        }
                     }
                     //int newYearlyChange = rng.Next((stalk.minChangeBull), (stalk.maxChangeBull));
                     stalk.UpdateYearlyChange(stalk.YearlyChange, newYearlyChange);

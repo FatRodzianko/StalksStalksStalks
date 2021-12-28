@@ -97,7 +97,7 @@ public class SteamAchievementManager : MonoBehaviour
         if (lifetimeLoses < 1000)
         {
             lifetimeLoses++;
-            SteamUserStats.SetStat("sss_wins", lifetimeLoses);
+            SteamUserStats.SetStat("sss_loses", lifetimeLoses);
             if (lifetimeLoses == 1000)
             {
                 SteamUserStats.SetAchievement("SSS_LOSES_THOUSAND");
@@ -111,6 +111,7 @@ public class SteamAchievementManager : MonoBehaviour
                 SteamUserStats.SetAchievement("SSS_LOSES_TEN");
             }
         }
+        Steamworks.SteamUserStats.StoreStats();
     }
     public void CheckLocalPlayerStatsEndOfGame(GamePlayer localPlayer)
     {
@@ -218,5 +219,23 @@ public class SteamAchievementManager : MonoBehaviour
         SteamUserStats.SetAchievement("SSS_BANKRUPT");
         SteamUserStats.StoreStats();
     }
-
+    public void YeehawGiven()
+    {
+        Debug.Log("SteamAchievementManager: YeehawGiven");
+        int yeehawsGiven = 0;
+        SteamUserStats.GetStat("sss_yeehaws", out yeehawsGiven);
+        Debug.Log("SteamAchievementManager: YeehawGiven : player has this many yeehaws so far: " + yeehawsGiven.ToString());
+        if (yeehawsGiven == 0)
+        {
+            Debug.Log("SteamAchievementManager: Setting yeehaw 1 achievement");
+            SteamUserStats.SetAchievement("SSS_YEEHAW_ONE");
+        }
+        yeehawsGiven++;
+        SteamUserStats.SetStat("sss_yeehaws", yeehawsGiven);
+        if (yeehawsGiven == 100)
+        {
+            SteamUserStats.SetAchievement("SSS_YEEHAW_HUNDRED");
+        }
+        SteamUserStats.StoreStats();
+    }
 }

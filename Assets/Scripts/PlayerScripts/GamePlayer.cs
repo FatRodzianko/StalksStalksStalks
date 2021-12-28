@@ -404,12 +404,21 @@ public class GamePlayer : NetworkBehaviour
             return;
         }
         GameplayManager.instance.givingYeehawPlayer = this.PlayerName;
-        RpcYeehawGiven(this.PlayerName);
+        RpcYeehawGiven(this.PlayerName, this.playerSteamId);
     }
     [ClientRpc]
-    void RpcYeehawGiven(string name)
+    void RpcYeehawGiven(string name, ulong steamidOfYeehawer)
     {
         GameplayManager.instance.YeehawGiven(name);
+        if (hasAuthority)
+        {
+            Debug.Log("RpcYeehawGiven: Has authority. Steam id sent is " + steamidOfYeehawer.ToString() + " steam id of this player is: " + this.playerSteamId.ToString());
+            if (this.playerSteamId == steamidOfYeehawer)
+            {
+                Debug.Log("RpcYeehawGiven: steams match");
+                SteamAchievementManager.instance.YeehawGiven();
+            }
+        }
     }
     public void GetMaxPlayerCanAfford(int cash)
     {
