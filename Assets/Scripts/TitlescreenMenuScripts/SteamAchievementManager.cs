@@ -172,7 +172,7 @@ public class SteamAchievementManager : MonoBehaviour
             SteamUserStats.StoreStats();
             Debug.Log("NumberOfYearsAchievements: Mortgage");
         }
-        else if (years == 99)
+        if (years == 99)
         {
             SteamUserStats.SetAchievement("SSS_CENTURY");
             SteamUserStats.StoreStats();
