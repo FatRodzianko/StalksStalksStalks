@@ -18,6 +18,7 @@ public class GameplayManager : NetworkBehaviour
     [SyncVar(hook = nameof(UpdateBearOrBullText))] public string bearOrBull;
     [SyncVar(hook = nameof(HandleIsThisLastYear))] public bool isThisLastYear;
     [SyncVar] public bool areLoansEnabled;
+    [SyncVar] public int startingWealth;
     bool bankruptThisTurn;
     public bool errorMessageRoutineRunning = false;
 
@@ -139,6 +140,7 @@ public class GameplayManager : NetworkBehaviour
         SetCurrentYear(0);
         SetBearOrBullText("");
         GetLoansEnabled();
+        GetStartingWealth();
         StalkManager.instance.CreateNewStalks();
     }
     void Start()
@@ -209,6 +211,12 @@ public class GameplayManager : NetworkBehaviour
     {
         Debug.Log("Executing GetLoansEnabled on the server.");
         areLoansEnabled = SteamLobby.instance.loansEnabled;
+    }
+    [Server]
+    void GetStartingWealth()
+    {
+        Debug.Log("Executing GetStartingWealth on the server.");
+        startingWealth = SteamLobby.instance.startingWealth;
     }
     [Client]
     public void AddStalkListItemToBoard(GameObject stalkListItemToAdd)

@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Toggle enableLoansToggle;
     public bool didPlayerNameTheLobby = false;
     public string lobbyName;
+    [SerializeField] private TMP_InputField startingWealthInputField;
     [Header("Lobby List UI")]
     [SerializeField] private GameObject LobbyListItemPrefab;
     [SerializeField] private GameObject ContentPanel;
@@ -106,9 +107,21 @@ public class MainMenuManager : MonoBehaviour
             loansEnabled = true;
         else
             loansEnabled = false;
+        //Get starting wealth from player input
+        int playerStartingWealth = 0;
+        Int32.TryParse(startingWealthInputField.text, out playerStartingWealth);
+        if (string.IsNullOrWhiteSpace(startingWealthInputField.text))
+        {
+            Debug.Log("CreateNewLobby: Using default starting wealth of 10,000");
+            playerStartingWealth = 10000;
+        }
+        else if (!(playerStartingWealth > 149 && playerStartingWealth < 69421))
+        {
+            Debug.Log("CreateNewLobby: player did not provide valid number for player starting wealth");
+            return;
+        }
 
-
-        SteamLobby.instance.CreateNewLobby(newLobbyType, maxNumberOfPlayers, numberOfYearsForLobby, loansEnabled);
+        SteamLobby.instance.CreateNewLobby(newLobbyType, maxNumberOfPlayers, numberOfYearsForLobby, loansEnabled, playerStartingWealth);
     }
     public void GetListOfLobbies()
     {

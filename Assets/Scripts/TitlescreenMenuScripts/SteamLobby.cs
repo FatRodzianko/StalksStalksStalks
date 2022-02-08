@@ -28,6 +28,7 @@ public class SteamLobby : MonoBehaviour
     public int maxNumberOfPlayers;
     public int numberOfYears;
     public bool loansEnabled;
+    public int startingWealth;
 
     private NetworkManager networkManager;
 
@@ -200,12 +201,16 @@ public class SteamLobby : MonoBehaviour
         listOfLobbyListItems.Clear();
     }
 
-    public void CreateNewLobby(ELobbyType lobbyType, int maxPlayers, int years, bool areLoansEnabled)
+    public void CreateNewLobby(ELobbyType lobbyType, int maxPlayers, int years, bool areLoansEnabled, int playerStartingWealth)
     {
         Debug.Log("CreateNewLobby: lobby type: " + lobbyType.ToString() + " max players: " + maxPlayers.ToString() + " number of years: " + years.ToString());
         if (years > 0)
             numberOfYears = years;
         loansEnabled = areLoansEnabled;
+        if (playerStartingWealth > 149 && playerStartingWealth < 69421)
+            startingWealth = playerStartingWealth;
+        else
+            startingWealth = 10000;
         if (maxPlayers > 0)
         {
             maxNumberOfPlayers = maxPlayers;

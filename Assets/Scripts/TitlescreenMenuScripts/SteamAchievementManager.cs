@@ -117,7 +117,7 @@ public class SteamAchievementManager : MonoBehaviour
     {
         bool didPlayerGetAchievement = false;
         SteamUserStats.RequestCurrentStats();
-        if (localPlayer.netWorth >= 50000)
+        if (localPlayer.netWorth >= 50000 && GameplayManager.instance.startingWealth < 10001)
         {
             didPlayerGetAchievement = true;
             SteamUserStats.SetAchievement("SSS_NETWORTH_FIFTY");
@@ -147,12 +147,12 @@ public class SteamAchievementManager : MonoBehaviour
             if (liftimeNetWorth >= 1000000000)
                 SteamUserStats.SetAchievement("SSS_ONE_BIL");
         }
-        if (localPlayer.netWorth >= 20000)
+        if (localPlayer.netWorth >= (GameplayManager.instance.startingWealth*2))
         {
             didPlayerGetAchievement = true;
             SteamUserStats.SetAchievement("SSS_DOUBLED");
         }
-        if (localPlayer.netWorth <= 5000)
+        if (localPlayer.netWorth <= (GameplayManager.instance.startingWealth / 2))
         {
             didPlayerGetAchievement = true;
             SteamUserStats.SetAchievement("SSS_HALVED");

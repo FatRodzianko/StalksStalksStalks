@@ -107,8 +107,8 @@ public class GamePlayer : NetworkBehaviour
     public void CmdGetPlayerStartingCashAndNetworth()
     {
         Debug.Log("executing GetPlayerStartingCashAndNetworth on the server for " + this.PlayerName);
-        this.UpdateCashOnHandText(this.cashOnHand, 10000);
-        this.UpdateNetworthText(this.netWorth, 10000);
+        this.UpdateCashOnHandText(this.cashOnHand, GameplayManager.instance.startingWealth);
+        this.UpdateNetworthText(this.netWorth, GameplayManager.instance.startingWealth);
     }
     public void UpdateCashOnHandText(int oldValue, int newValue)
     {
